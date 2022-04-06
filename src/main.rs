@@ -1,8 +1,6 @@
 mod read_file_lines;
-use std::env;
+mod longest_common_subsequence;
 
-fn main() -> std::io::Result<()> {
-    let path = env::current_dir()?;
-    println!("The current directory is {}", path.display());
-    Ok(())
+fn main() {
+    println!("Hello, world!");
 }
