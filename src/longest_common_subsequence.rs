@@ -1,7 +1,7 @@
 use std::cmp::max;
 use grid::Grid;
 
-fn longest_common_subsequence(a: &str, b: &str) -> Grid<u8> {
+pub fn longest_common_subsequence(a: Vec<String>, b: Vec<String>) -> Grid<u8> {
     let m = a.len();
     let n = b.len();
     let mut grid: Grid<u8> = Grid::new(m+1, n+1);
@@ -14,8 +14,10 @@ fn longest_common_subsequence(a: &str, b: &str) -> Grid<u8> {
     }
     for i in 0..m {
         for j in 0..n {
-            let c = a.chars().nth(i).unwrap();
-            let d = b.chars().nth(j).unwrap();
+            //let c = a.chars().nth(i).unwrap();
+            //let d = b.chars().nth(j).unwrap();
+            let c = a.get(i);
+            let d = b.get(j);
             if c == d {
                 grid[i+1][j+1] = grid[i][j] + 1
             } else {
@@ -23,10 +25,10 @@ fn longest_common_subsequence(a: &str, b: &str) -> Grid<u8> {
             }
         }
     }
-    return grid;
+    grid
 }
 
-mod should {
+mod longest_common_subsequence_should {
     use super::*;
 
     #[test]

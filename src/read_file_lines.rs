@@ -1,7 +1,7 @@
 use std::fs::File;
 use std::io::{prelude::*, BufReader, Error};
 
-fn read_file_lines(file_path: &str) -> Result<Vec<String>, Error> {
+pub fn read_file_lines(file_path: &str) -> Result<Vec<String>, Error> {
     let file = File::open(file_path)?;
     let reader = BufReader::new(file);
     let mut lines = Vec::new();
