@@ -12,20 +12,26 @@ pub fn read_file_lines(file_path: &str) -> Result<Vec<String>, Error> {
 }
 
 mod tests {
+    use std::env;
     use super::*;
 
     #[test]
     fn should_fail_if_file_doesnt_exist() {
         let file_path = "non-existent-file.txt";
 
-        assert_eq!(read_file_lines(file_path).unwrap_err().to_string(), "No such file or directory (os error 2)");
+        assert_eq!(
+            read_file_lines(file_path).unwrap_err().to_string(),
+            "No such file or directory (os error 2)"
+        );
     }
 
     #[test]
     fn should_return_lines_in_file() {
-        let file_path = "/home/sofia/FIUBA/TALLER I/diff/src/example.txt";
-        let lines = ["hola", "chau"];
+        let path = env::current_dir().unwrap();
+        let file_path = path.join("src/example.txt");
+        let lines = ["Abc", "Hjk"];
+        println!("path is: {}", file_path.to_str().unwrap());
 
-        assert_eq!(read_file_lines(file_path).unwrap(), lines);
+        assert_eq!(read_file_lines(file_path.to_str().unwrap()).unwrap(), lines);
     }
 }
