@@ -8,6 +8,8 @@ pub fn read_file_lines(file_path: &str) -> Result<Vec<String>, Error> {
     for line in reader.lines() {
         lines.push(line.unwrap());
     }
+    let n = lines.len();
+    lines.rotate_right(n);
     Ok(lines)
 }
 
@@ -29,8 +31,7 @@ mod tests {
     fn should_return_lines_in_file() {
         let path = env::current_dir().unwrap();
         let file_path = path.join("src/example.txt");
-        let lines = ["Abc", "Hjk"];
-        println!("path is: {}", file_path.to_str().unwrap());
+        let lines = ["Abc", "Hjk", "A"];
 
         assert_eq!(read_file_lines(file_path.to_str().unwrap()).unwrap(), lines);
     }

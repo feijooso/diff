@@ -21,5 +21,5 @@ fn main() {
     let lenb = lines2.len();
 
     let grid = longest_common_subsequence(lines.clone(), lines2.clone());
-    //print_diff(grid, lines, lines2, lena, lenb)
+    print_diff(grid, lines, lines2, lena, lenb)
 }

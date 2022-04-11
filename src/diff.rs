@@ -1,6 +1,4 @@
-use grid::Grid;
-
-pub fn print_diff(grid: Grid<u8>, a: Vec<String>, b: Vec<String>, i: usize, j: usize) {
+pub fn print_diff(grid: Vec<Vec<u8>>, a: Vec<String>, b: Vec<String>, i: usize, j: usize) {
     if i > 0 && j > 0 && a[i - 1] == b[j - 1] {
         println!("  {}", a[i - 1]);
         print_diff(grid, a, b, i - 1, j - 1);
