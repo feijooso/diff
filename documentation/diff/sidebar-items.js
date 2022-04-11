@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["print_diff","La función imprime cuáles lineas son diferentes entre dos archivos grid es la grilla computada por longest_common_subsequence a y b son las lineas de los archivos que se quiere comparar i y j son la ubicacion dentro de la grilla"]]});

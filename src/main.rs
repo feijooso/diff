@@ -25,11 +25,14 @@ fn main() {
     print_diff(grid, lines, lines2, lena, lenb)
 }
 
+/// Devuelve el path completo dado el nombre de la carpeta
+/// que se encuentra en la misma carpeta que el main
 fn get_file_path(file: &str) -> PathBuf {
     let path = env::current_dir().unwrap();
     path.join(file)
 }
 
+/// Devuelve las lineas del archivo indicado en un vector
 fn read_and_unwrap_file(file_path: PathBuf) -> Vec<String> {
     read_file_lines(file_path.to_str().unwrap()).unwrap()
 }

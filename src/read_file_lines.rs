@@ -16,8 +16,8 @@ pub fn read_file_lines(file_path: &str) -> Result<Vec<String>, Error> {
 
 #[cfg(test)]
 mod read_file_lines_should {
-    use std::env;
     use super::read_file_lines;
+    use std::env;
 
     #[test]
     fn should_fail_if_file_doesnt_exist() {

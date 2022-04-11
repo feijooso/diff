@@ -5,7 +5,7 @@ use std::cmp::max;
 pub fn longest_common_subsequence(lines1: Vec<String>, lines2: Vec<String>) -> Vec<Vec<u8>> {
     let m = lines1.len();
     let n = lines2.len();
-    let mut matrix = vec![vec![0;n+1]; m+1];
+    let mut matrix = vec![vec![0; n + 1]; m + 1];
 
     for i in 0..m {
         for j in 0..n {
@@ -27,11 +27,11 @@ mod longest_common_subsequence_should {
 
     #[test]
     fn return_all_zero_grid_given_empty_files() {
-        let zero_matrix = vec![vec![0;1]; 1];
+        let zero_matrix = vec![vec![0; 1]; 1];
         assert_eq!(longest_common_subsequence(vec![], vec![]), zero_matrix);
     }
 
-   #[test]
+    #[test]
     fn return_longest_subsequence_size() {
         let seq1 = vec![String::from("abc"), String::from("abcd")];
         let seq2 = vec![String::from("abc"), String::from("abcde")];
