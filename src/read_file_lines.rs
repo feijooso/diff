@@ -1,6 +1,8 @@
 use std::fs::File;
 use std::io::{prelude::*, BufReader, Error};
 
+///La función guarda las lineas de un archivo dado en un vector
+
 pub fn read_file_lines(file_path: &str) -> Result<Vec<String>, Error> {
     let file = File::open(file_path)?;
     let reader = BufReader::new(file);
@@ -8,14 +10,14 @@ pub fn read_file_lines(file_path: &str) -> Result<Vec<String>, Error> {
     for line in reader.lines() {
         lines.push(line.unwrap());
     }
-    let n = lines.len();
-    lines.rotate_right(n);
+    lines.reverse();
     Ok(lines)
 }
 
-mod tests {
+#[cfg(test)]
+mod read_file_lines_should {
     use std::env;
-    use super::*;
+    use super::read_file_lines;
 
     #[test]
     fn should_fail_if_file_doesnt_exist() {
@@ -31,7 +33,7 @@ mod tests {
     fn should_return_lines_in_file() {
         let path = env::current_dir().unwrap();
         let file_path = path.join("src/example.txt");
-        let lines = ["Abc", "Hjk", "A"];
+        let lines = ["A", "Hjk", "Abc"];
 
         assert_eq!(read_file_lines(file_path.to_str().unwrap()).unwrap(), lines);
     }

@@ -1,20 +1,16 @@
 use std::cmp::max;
 
-pub fn longest_common_subsequence(a: Vec<String>, b: Vec<String>) -> Vec<Vec<u8>> {
-    let m = a.len();
-    let n = b.len();
+///La función devuelve una grilla con los largos de subsecuencias
+
+pub fn longest_common_subsequence(lines1: Vec<String>, lines2: Vec<String>) -> Vec<Vec<u8>> {
+    let m = lines1.len();
+    let n = lines2.len();
     let mut matrix = vec![vec![0;n+1]; m+1];
 
-    for i in 0..m + 1 {
-        matrix[i][0] = 0;
-    }
-    for j in 0..n + 1 {
-        matrix[j][0] = 0;
-    }
     for i in 0..m {
         for j in 0..n {
-            let c = a.get(i);
-            let d = b.get(j);
+            let c = lines1.get(i);
+            let d = lines2.get(j);
             if c == d {
                 matrix[i + 1][j + 1] = matrix[i][j] + 1;
             } else {
@@ -25,8 +21,9 @@ pub fn longest_common_subsequence(a: Vec<String>, b: Vec<String>) -> Vec<Vec<u8>
     matrix
 }
 
+#[cfg(test)]
 mod longest_common_subsequence_should {
-    use super::*;
+    use super::longest_common_subsequence;
 
     #[test]
     fn return_all_zero_grid_given_empty_files() {
